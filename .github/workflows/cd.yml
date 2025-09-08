@@ -1,0 +1,39 @@
+name: Deploy to Vercel
+
+on:
+  workflow_run:
+    workflows: ["Multiple CI Pipeline"]  # Trigger CD after CI completes
+    types:
+      - completed  # This ensures that CD only runs when CI completes
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Show the Path
+        run: pwd  # This will print the current working directory
+
+      - name: Install dependencies
+        run: |
+          cd 10-Timer-Challenges  # Go to the specific project folder
+          npm install  # Install dependencies again for deployment
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel  # Install Vercel CLI globally
+
+      - name: Deploy to Vercel
+        run: |
+          cd 10-Timer-Challenges  # Go to the specific project folder
+          npx vercel --token ${{ secrets.VERCEL_TOKEN }} --yes --name timer-challenge  # Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Vercel token for authentication
+

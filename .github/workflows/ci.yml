@@ -1,0 +1,39 @@
+name: Multiple CI Pipeline
+
+on:
+  push:
+    branches:
+      - master  # Adjust as needed
+    paths:
+      - "10-Timer-Challenges/**"  # Trigger CI only for changes in this folder
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "10-Timer-Challenges/**"  # Trigger for PRs as well
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Show the Path
+        run: pwd  # This will print the current working directory
+
+      - name: Install dependencies
+        run: |
+          cd 10-Timer-Challenges  # Go to the specific project folder
+          npm install  # Install dependencies
+
+      - name: Build the project
+        run: |
+          cd 10-Timer-Challenges  # Go to the specific project folder
+          npm run build  # Build the project
