@@ -5,7 +5,7 @@ on:
     branches:
       - master  # Adjust as needed
     paths:
-      - "10-Timer-Challenges/**"  # Trigger CI only for changes in this folder
+      - "10-Timer-Challenges/**"
   pull_request:
     branches:
       - master
