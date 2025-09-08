@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - "10-Timer-Challenges/**"   # You can change this path to whichever project you want to trigger the CI pipeline
+      - "10-Timer-Challenges/**"
 jobs:
   build:
     runs-on: ubuntu-latest
