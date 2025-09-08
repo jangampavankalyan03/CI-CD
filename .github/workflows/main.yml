@@ -1,0 +1,29 @@
+name: Multiple CI Pipeline
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "10-Timer-Challenges/**"   # You can change this path to whichever project you want to trigger the CI pipeline
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Show the Path
+        run: pwd
+
+      - name: install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build
