@@ -5,12 +5,12 @@ on:
     branches:
       - master  # Adjust as needed
     paths:
-      - "10-Timer-Challenges/**"
+      - "11-Task-Lists/**"
   pull_request:
     branches:
       - master
     paths:
-      - "10-Timer-Challenges/**"  # Trigger for PRs as well
+      - "11-Task-Lists/**"  # Trigger for PRs as well
 
 jobs:
   build:
@@ -30,10 +30,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd 10-Timer-Challenges  # Go to the specific project folder
+          cd 11-Task-Lists  # Go to the specific project folder
           npm install  # Install dependencies
 
       - name: Build the project
         run: |
-          cd 10-Timer-Challenges  # Go to the specific project folder
+          cd 11-Task-Lists  # Go to the specific project folder
           npm run build  # Build the project
