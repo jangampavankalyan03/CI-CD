@@ -24,7 +24,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd 10-Timer-Challenges  # Go to the specific project folder
+          cd 11-Task-Lists  # Go to the specific project folder
           npm install  # Install dependencies again for deployment
 
       - name: Install Vercel CLI
@@ -32,8 +32,8 @@ jobs:
 
       - name: Deploy to Vercel
         run: |
-          cd 10-Timer-Challenges  # Go to the specific project folder
-          npx vercel --token ${{ secrets.VERCEL_TOKEN }} --yes --name timer-challenge  # Deploy to Vercel
+          cd 11-Task-Lists  # Go to the specific project folder
+          npx vercel --token ${{ secrets.VERCEL_TOKEN }} --yes --name tasks-lists # Deploy to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Vercel token for authentication
 
